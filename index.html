@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@3.6.2/dist/full.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Hot Gadget</title>
+    <link rel="icon" type="image/x-icon" href="./images/apple.png">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+
+        .font {
+            font-family: 'Poppins', sans-serif;
+        }
+    </style>
+
+
+</head>
+
+<body>
+
+
+
+    <main>
+        <section style="background: rgba(13, 110, 253, 0.05);" class="h-[50rem]">
+
+            <header class="flex justify-between items-center pt-9 mx-4 md:mx-28">
+                <h3 class="text-[#403F3F] font text-2xl font-semibold">Hot Gadgets</h3>
+                <button
+                    class="btn btn-secondary border-none text-white text-xl font-semibold bg-[#0D6EFD] w-40 h-16 rounded-lg">Sign
+                    Up</button>
+            </header>
+            <!-- cover section  -->
+            <section>
+                <h1 class="text-[#100F0F] text-center font text-4xl md:text-[4rem] font-semibold mt-9 lg:mt-14">Apple Iphone 13 Pro Max</h1>
+                <p class="text-center lg:w-[46rem] text-[#706F6F] text-lg mt-6 mx-auto">There are many variations of
+                    passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by
+                    injected humou.</p>
+                <div class="text-center mt-8">
+                    <button
+                        class="btn btn-secondary border-none text-white text-xl font-semibold bg-[#0D6EFD] w-40 h-16 rounded-lg">Buy
+                        Now</button>
+                </div>
+
+            </section>
+
+            <div class="flex justify-center items-baseline mt-16">
+                <img class="w-[7rem] lg:w-auto h-[12rem] lg:h-auto" src="./images/mobilecover1.png" alt="">
+                <img class="w-[9rem] lg:w-auto h-[16rem] lg:h-auto" src="./images/mobilecover2.png" alt="">
+                <img class="w-[7rem] lg:w-auto h-[12rem] lg:h-auto" src="./images/mobilecover3.png" alt="">
+            </div>
+        </section>
+
+        <!-- search section -->
+
+        <section class="mt-8 lg:mt-[25rem]">
+            <h1 class="text-center text-[#100F0F] font text-[2.1rem] font-medium">Search your phone</h1>
+
+            <div class="relative lg:w-[47rem] h-16 rounded-lg mx-3 lg:mx-auto mt-8">
+
+                <input id="search-field" style="background-color: rgba(16, 15, 15, 0.05); 
+                background-image: url(./images/search.svg); 
+                background-repeat: no-repeat; 
+                background-position-y: center;
+                background-position-x: 1rem;" type="text" placeholder="Search your phone"
+                    class="input input-bordered w-full pr-16 pl-12 h-16 text-[#706F6F] font text-base border-none" />
+                <button onclick="handleSearch()"
+                    class="btn btn-secondary border-none text-white text-xl font-semibold bg-[#0D6EFD] w-40 h-16 absolute top-0 right-0 rounded-l-none">Search</button>
+            </div>
+        </section>
+
+        <section>
+            <div id="loading-spinner" class="text-center mt-60 hidden">
+                <span class="loading loading-spinner loading-lg w-20"></span>
+            </div>
+            <div id="phone-container"
+                class="w-9/12 mx-auto mt-14 grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-8 justify-items-center">
+
+                <!-- <div class="w-[22.75rem] h-[39.5rem] rounded-lg bg-[#FFFFFF] border border-gray-300">
+                    <div style="background: rgba(13, 110, 253, 0.05);" class="w-[19.625rem] h-[18.75rem] rounded-lg mx-auto mt-[1.56rem]" >
+                        <div class="h-[18.75rem] flex justify-center items-center">
+                            <img src="" alt="">
+                        </div>
+
+                    </div>
+
+                    <h1 class="text-[#403F3F] text-center font text-2xl font-semibold mt-6">Iphone 13 Pro Max</h1>
+                    <p class="text-[#706F6F] text-center font text-lg w-[18.1rem] mx-auto mt-4">There are many variations of passages of available, but the majority have suffered</p>
+                    <h2 class="text-[#403F3F] text-center font text-2xl font-semibold mt-6">$999</h2>
+
+                    <div class="text-center mt-4">
+                        <button class="btn btn-secondary border-none text-white text-xl font-semibold bg-[#0D6EFD] w-[11.25rem] h-12 rounded-lg">Buy Now</button>
+                    </div>
+
+                </div> -->
+
+            </div>
+
+
+            <!-- Open the modal using ID.showModal() method -->
+            
+            <dialog id="showDetailsModal" class="modal modal-bottom sm:modal-middle">
+                <form method="dialog" class="modal-box w-[90%] lg:w-auto mx-auto   h-[75rem] rounded-lg bg-white">
+                    
+                    
+                    <div id="modal-ifo-container">
+
+                        <!-- <div style="background: rgba(13, 110, 253, 0.05);" class="h-[30.18rem] rounded-r-lg flex justify-center items-center">
+
+                            <img src="https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-13-pro-max.jpg" alt="">
+
+                        </div>
+                        <h3 class="text-[#403F3F] text-center font text-3xl font-semibold mt-8">iphone 13 pro max</h3>
+                        
+                        <p class="text-[#706F6F] font text-sm font mt-6 ">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
+
+                        <p class="text-[#706F6F] font mt-5 font-normal text-base">
+                            <span class="text-[#403F3F] font-semibold text-base">Storage :</span> 
+                            128GB/256GB/1TB Storage, No card slot
+                        </p>
+                        <p class="text-[#706F6F] font mt-5 font-normal text-base">
+                            <span class="text-[#403F3F] font-semibold text-base">Display Size :</span> 
+                            6.7 Inches, 109.8 cm
+                        </p>
+                        <p class="text-[#706F6F] font mt-5 font-normal text-base">
+                            <span class="text-[#403F3F] font-semibold text-base">Chipset :</span> 
+                            Apple A15 Bionic
+                        </p>
+                        <p class="text-[#706F6F] font mt-5 font-normal text-base">
+                            <span class="text-[#403F3F] font-semibold text-base">Memory :</span> 
+                            128GB 6 GB RAM, 256GB RAM, 512GB RAM1 1TB 6GB RAM
+                        </p>
+                        <p class="text-[#706F6F] font mt-5 font-normal text-base">
+                            <span class="text-[#403F3F] font-semibold text-base">Slug :</span> 
+                            Applice_Iphone_13_Pro_Max
+                        </p>
+                        <p class="text-[#706F6F] font mt-5 font-normal text-base">
+                            <span class="text-[#403F3F] font-semibold text-base">Release data :</span> 
+                            Released 2021, September 24
+                        </p>
+                        <p class="text-[#706F6F] font mt-5 font-normal text-base">
+                            <span class="text-[#403F3F] font-semibold text-base">Brand :</span> 
+                            Apple
+                        </p>
+                        <p class="text-[#706F6F] font mt-5 font-normal text-base">
+                            <span class="text-[#403F3F] font-semibold text-base">GPS :</span> 
+                            AYes, with A-GPS, GLONASS, GALILEO, BDS, QZSS
+                        </p> -->
+
+
+                    </div>
+
+
+                    <div class="modal-action">
+                        <!-- if there is a button in form, it will close the modal -->
+                        <button class="btn btn-secondary border-none text-white text-xl font-semibold bg-[#0D6EFD] w-40 h-16 rounded-lg mt-7">Close</button>
+                    </div>
+                </form>
+            </dialog>
+
+
+        </section>
+
+        <div id="show-all-btn" class="text-center mt-12 hidden">
+            <button onclick="handleShowAll()"
+                class="btn btn-secondary border-none text-white text-xl font-semibold bg-[#0D6EFD] w-40 h-16 rounded-lg">Show
+                All</button>
+        </div>
+
+
+
+        <footer style="background: rgba(13, 110, 253, 0.05);" class="h-[43rem] mt-28">
+
+            <div class="flex flex-col lg:flex-row justify-between items-center w-9/12 mx-auto pt-32">
+                <div>
+                    <h1 class="text-[#100F0F] font text-[2.8rem] font-semibold">Hot Gadgets</h1>
+                    <p class="text-[#706F6F] font text-lg font-medium mt-3 ">You can definitely work.</p>
+                </div>
+
+                <div class="flex items-center gap-8 mt-6 lg:mt-0">
+                    <img class="cursor-pointer" src="./images/Social.svg" alt="">
+                    <div>
+                        <button
+                        class="btn btn-secondary border-none text-white text-xl font-semibold bg-[#0D6EFD] w-40 h-16 rounded-lg">Buy
+                        Now</button>
+                    </div>
+
+                </div>
+            </div>
+
+            <hr class="w-9/12 mt-16 mx-auto">
+
+
+            <div class="grid grid-cols-4 justify-items-center w-9/12 mx-auto mt-12">
+                
+                <div class="text-[#403F3F] font text-[0.5rem] md:text-xl font-light flex flex-col gap-6">
+                    <p><a href="">Product </a></p>
+                    <p><a href="">Browse jobs </a></p>
+                    <p><a href="">Remote jobs </a></p>
+                    <p><a href="">Startup jobs </a></p>
+                    <p><a href="">Company jobs </a></p>
+                </div>
+
+                <div class="text-[#403F3F] font text-[0.5rem] md:text-xl font-light flex flex-col gap-6">
+                    <p><a href="">Popular  </a></p>
+                    <p><a href="">UIUX Design </a></p>
+                    <p><a href="">Product Design </a></p>
+                    <p><a href="">Back-End Developer </a></p>
+                    <p><a href="">Front-End Developer</a></p>
+                </div>
+
+                <div class="text-[#403F3F] font text-[0.5rem] md:text-xl font-light flex flex-col gap-6">
+                    <p><a href="">Resource  </a></p>
+                    <p><a href="">Faq  </a></p>
+                    <p><a href="">Support </a></p>
+                    <p><a href="">Privacy Policy </a></p>
+                    <p><a href="">Terms of Service</a></p>
+                </div>
+
+                <div class="text-[#403F3F] font text-[0.5rem] md:text-xl font-light flex flex-col gap-6">
+                    <p><a href="">Company </a></p>
+                    <p><a href="">bout Us</a></p>
+                    <p><a href="">Contact Us</a></p>
+                    <p><a href="">Career Tips</a></p>
+                    <p><a href="">CCareers</a></p>
+                </div>
+            </div>
+
+
+        </footer>
+    </main>
+
+
+
+
+
+
+    <script src="script.js"></script>
+</body>
+
+</html>
